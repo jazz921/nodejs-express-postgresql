@@ -51,8 +51,8 @@ app.delete("/accounts/:id", async (req, res, next) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log("App is running at PORT:3000");
+app.listen(8080, () => {
+    console.log("App is running at PORT:8080");
 });
 
 
