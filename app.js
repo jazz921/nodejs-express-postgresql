@@ -1,5 +1,6 @@
-import express from "express";
-import { getAccounts, createAccount, getAccount, deleteAccount } from "./database.js";
+const express = require('express');
+const { getAccounts, createAccount, getAccount, deleteAccount } = require("./database.js");
+
 
 const app = express();
 app.use(express.json());
@@ -56,4 +57,4 @@ app.listen(8080, () => {
 });
 
 
-export default app
+module.exports = app

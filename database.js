@@ -1,6 +1,6 @@
-import pg from "pg";
+const pg = require('pg')
 const { Pool } = pg;
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
 
 dotenv.config(); // This library automatically configure the env files for the project
 
@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 // Get All Accounts
-export async function getAccounts() {
+async function getAccounts() {
     const client = await pool.connect();
     try {
         const query = {
@@ -27,7 +27,7 @@ export async function getAccounts() {
 }
 
 // Get Single Account
-export async function getAccount(id) {
+async function getAccount(id) {
     const client = await pool.connect();
 
     try {
@@ -46,7 +46,7 @@ export async function getAccount(id) {
 }
 
 // Inserting a single account
-export async function createAccount(username, email, password) {
+async function createAccount(username, email, password) {
     const client = await pool.connect();
     try {
         const query = {
@@ -63,7 +63,7 @@ export async function createAccount(username, email, password) {
     }
 }
 
-export async function editAccountPassword(id, newPassword) {
+async function editAccountPassword(id, newPassword) {
     const client = await pool.connect();
 
     try {
@@ -84,7 +84,7 @@ export async function editAccountPassword(id, newPassword) {
     }
 }
 
-export async function editAccountUsername(id, newUsername) {
+async function editAccountUsername(id, newUsername) {
     const client = await pool.connect();
 
     try {
@@ -105,7 +105,7 @@ export async function editAccountUsername(id, newUsername) {
     }
 }
 
-export async function deleteAccount(id) {
+async function deleteAccount(id) {
     const client = await pool.connect();
 
     try {
@@ -124,6 +124,15 @@ export async function deleteAccount(id) {
     } finally {
         client.release();
     }
+}
+
+module.exports = {
+    getAccounts,
+    getAccount,
+    createAccount,
+    editAccountPassword,
+    editAccountUsername,
+    deleteAccount
 }
 
 // const accounts = await getAccounts();
